@@ -1,0 +1,62 @@
+version: '3.9'
+# SSL TESTING VERSION
+services:
+  web:
+    container_name: gunicorn
+    build: 
+      context: ./gunicorn
+      dockerfile: Dockerfile.prod
+    command: gunicorn stockinterestmetric.wsgi:application --bind 0.0.0.0:8000
+    volumes:
+      - static_volume:/home/app/web/staticfiles
+      - guni_vol:/home/app/web/
+    expose:
+      - 8000
+    env_file:
+      - ./.env.prod
+    depends_on:
+      - db
+  db:
+    container_name: postgres
+    image: postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    env_file:
+      - ./.env.prod.db
+
+  nginx:
+    container_name: nginx
+    build: ./nginx
+    volumes:
+      - static_volume:/home/app/web/staticfiles
+      - ./nginx/testcert:/etc/nginx/ssl
+    ports:
+      - "80:80"
+      - "443:443"
+      - "800:800"
+    depends_on:
+      - web
+    restart: always
+
+  server:
+    container_name: server_1
+    build: ./server
+    command: python entry.py
+    volumes:
+      - ./server:/server/
+    expose:
+      - 4443
+
+  cron:
+    container_name: cron
+    build: ./cron
+    volumes:
+      - guni_vol:/usr/src/app/
+    env_file:
+      - ./.env.prod
+    command: /cron/entrypoint.sh
+
+volumes:
+  postgres_data:
+  static_volume:
+  guni_vol:

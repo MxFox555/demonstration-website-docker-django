@@ -1,0 +1,18 @@
+# *
+User-agent: *
+Disallow: /admin/
+Disallow: /api/
+Disallow: /panel/
+Disallow: /forgotpassword/
+Disallow: /resetpassword/
+Disallow: /activate/
+
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://stockinterestmetric.com
+
+# Sitemaps
+Sitemap: https://stockinterestmetric.com/sitemap.xml

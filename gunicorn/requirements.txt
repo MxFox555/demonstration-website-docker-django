@@ -1,0 +1,5 @@
+Django
+gunicorn
+python-dateutil
+psycopg2-binary
+django-ratelimit

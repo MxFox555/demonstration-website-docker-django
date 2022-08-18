@@ -1,0 +1,9 @@
+db.sqlite3
+git commands.txt
+/postgres
+/backup
+/data/letsencrypt
+/pgadmin
+*.bkp
+*.bak
+/gunicorn/Client

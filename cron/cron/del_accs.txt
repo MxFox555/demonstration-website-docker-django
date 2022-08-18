@@ -1,0 +1,2 @@
+*/30	*	*	*	*	python $APP_HOME/manage.py shell < $CRON_HOME/cron/auto_tasks.py >> $CRON_HOME/log/delete.log
+
