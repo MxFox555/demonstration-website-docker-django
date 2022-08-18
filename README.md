@@ -15,3 +15,4 @@ Once logged in, the "Web App" section can be used with data such as:
 - This demostrates a series of jQuery scripts and API calls in action.
 
 ![alt text](https://github.com/MxFox555/demonstration-website-docker-django/blob/main/Example.png?raw=True)
+![alt text](https://github.com/MxFox555/demonstration-website-docker-django/blob/main/Example2.png?raw=True)
